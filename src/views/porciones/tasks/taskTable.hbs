@@ -1,0 +1,38 @@
+{{#if tasks}}
+  <div class="table-responsive my-3">
+    <table class="table table-hover table-light table-sm">
+      <thead class="thead-dark">
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Title</th>
+          <th scope="col">Description</th>
+          <th scope="col">Operations</th>
+        </tr>
+      </thead>
+   
+      <tbody class="table-group-divider">
+        {{#each tasks}}
+          <tr>
+            <td>{{@index}}</td>
+            <td>{{title}}</td>
+            <td>{{description}}</td>
+            <td>
+              {{#if done}}
+                <a class="btn btn-success" href='/done/{{_id}}'> done </a>
+              {{else}}
+                <a class="btn btn-warning" href='/done/{{_id}}'> undone </a>
+              {{/if}}
+              <a class="btn btn-danger" href='/delete/{{_id}}'>delete</a>
+              <a class="btn btn-info" href='/edit/{{_id}}'>update</a>
+            </td>
+          </tr>
+        {{/each}}
+      </tbody>
+    </table>
+  </div>
+{{else}}
+  <div class="text-center">
+    <h1>No Tasks</h1>
+    <img class="img" type="module" src="/icons/empty.jpg" alt=""/>
+  </div>
+{{/if}}
